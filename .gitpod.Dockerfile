@@ -73,8 +73,7 @@ WORKDIR ${KNOWAGE_DIRECTORY}
 #
 # # Install dependencies
 RUN  apt-get update \
-  && apt-get install -q --no-install-recommends -y unzip \
-  && rm -rf /var/lib/apt/lists/*
+  && apt-get install -q --no-install-recommends -y unzip
 #
 # # Add MySql scripts
 # COPY ${KNOWAGE_DATABASE_SCRIPT}.zip ./
