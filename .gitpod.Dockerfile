@@ -1,5 +1,7 @@
 FROM gitpod/workspace-mysql
 
+USER gitpod
+
 # Knowage home directory
 ENV KNOWAGE_DIRECTORY="/home/knowage"
 
@@ -72,8 +74,9 @@ WORKDIR ${KNOWAGE_DIRECTORY}
 # COPY extContext ${TOMCAT_CONF_CUSTOM_CONTEXT}
 #
 # # Install dependencies
-RUN  apt-get update \
-  && apt-get install -q --no-install-recommends -y unzip
+RUN sudo apt-get update \
+  && sudo apt-get install -q --no-install-recommends -y unzip \
+  && sudo rm -rf /var/lib/apt/lists/*
 #
 # # Add MySql scripts
 # COPY ${KNOWAGE_DATABASE_SCRIPT}.zip ./
