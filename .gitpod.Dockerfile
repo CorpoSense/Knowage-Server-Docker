@@ -2,7 +2,7 @@ FROM knowagelabs/knowage-server-docker:7.4
 
 USER root
 
-RUN sudo apt-get update -q
+RUN apt-get update -q
 
 # specify the DB user (mandatory)
 ENV DB_USER=gitpod
