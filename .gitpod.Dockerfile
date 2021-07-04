@@ -1,11 +1,11 @@
 FROM gitpod/workspace-mysql
 
 # Knowage home directory
-ENV KNOWAGE_DIRECTORY /home/knowage
+ENV KNOWAGE_DIRECTORY="/home/knowage"
 
 # Apache Tomcat
 ARG APACHE_TOMCAT_VERSION="8.5.68"
-ENV APACHE_TOMCAT_PACKAGE apache-tomcat-${APACHE_TOMCAT_VERSION}
+ENV APACHE_TOMCAT_PACKAGE="apache-tomcat-${APACHE_TOMCAT_VERSION}"
 ARG APACHE_TOMCAT_URL="https://archive.apache.org/dist/tomcat/tomcat-8/v${APACHE_TOMCAT_VERSION}/bin/${APACHE_TOMCAT_PACKAGE}.zip"
 
 # Tomcat sub-directories
@@ -117,7 +117,7 @@ RUN  wget -q -O "${TOMCAT_LIB}/${LIB_COMMONS_LOGGING_NAME}"      "${LIB_COMMONS_
 FROM openjdk:8
 
 # Knowage home directory
-ENV KNOWAGE_DIRECTORY /home/knowage
+ENV KNOWAGE_DIRECTORY="/home/knowage"
 
 # Tomcat sub-directories
 ARG TOMCAT_HOME=${KNOWAGE_DIRECTORY}/apache-tomcat
@@ -139,7 +139,7 @@ RUN  apt-get update \
 
 COPY --from=init ${KNOWAGE_DIRECTORY}/mysql/ ${KNOWAGE_DIRECTORY}/mysql/
 
-ENV MYSQL_SCRIPT_DIRECTORY ${KNOWAGE_DIRECTORY}/mysql
+ENV MYSQL_SCRIPT_DIRECTORY="${KNOWAGE_DIRECTORY}/mysql"
 
 COPY --from=init ${TOMCAT_HOME} ${TOMCAT_HOME}
 
