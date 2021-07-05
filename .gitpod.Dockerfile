@@ -68,11 +68,11 @@ RUN sudo wget -q "${APACHE_TOMCAT_URL}" \
   && sudo mkdir ${TOMCAT_RESOURCES} ${TOMCAT_CONF_CUSTOM_SERVER} ${TOMCAT_CONF_CUSTOM_CONTEXT}
 
 # Copy config files
-COPY setenv.sh ${TOMCAT_BIN}/
-COPY server.xml context.xml knowage-default.policy hazelcast.xml ${TOMCAT_CONF}/
-COPY services-whitelist.xml ${TOMCAT_RESOURCES}
-COPY extGlobalResources ${TOMCAT_CONF_CUSTOM_SERVER}
-COPY extContext ${TOMCAT_CONF_CUSTOM_CONTEXT}
+# COPY setenv.sh ${TOMCAT_BIN}/
+# COPY server.xml context.xml knowage-default.policy hazelcast.xml ${TOMCAT_CONF}/
+# COPY services-whitelist.xml ${TOMCAT_RESOURCES}
+# COPY extGlobalResources ${TOMCAT_CONF_CUSTOM_SERVER}
+# COPY extContext ${TOMCAT_CONF_CUSTOM_CONTEXT}
 #
 # # Install dependencies
 RUN sudo apt-get update \
