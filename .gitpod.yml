@@ -12,8 +12,8 @@ tasks:
   # init: Will be executed one time when creating a workspace, command: will be exected each time you open workspace
   - init: |
       echo "init tasks..."
-      git  clone --depth 1 https://github.com/KnowageLabs/Knowage-Server.git
-      cd Knowage-Server
+      git clone --depth 1 https://github.com/KnowageLabs/Knowage-Server.git
+      cd Knowage-Server-Docker
       docker-compose up
     command: |
       echo "Find knowage server source at: ./Knowage-Server"
