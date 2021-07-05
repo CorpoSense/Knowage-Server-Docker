@@ -58,7 +58,7 @@ WORKDIR ${KNOWAGE_DIRECTORY}
 #
 # # Download Apache Tomcat and extract it
 RUN sudo wget -q "${APACHE_TOMCAT_URL}" \
-  && unzip ${APACHE_TOMCAT_PACKAGE}.zip -x "*/webapps/manager/*" \
+  && sudo unzip ${APACHE_TOMCAT_PACKAGE}.zip -x "*/webapps/manager/*" \
 	"*/webapps/host-manager/*" \
 	"*/webapps/examples/*" \
 	"*/webapps/docs/*" \
