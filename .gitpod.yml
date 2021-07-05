@@ -12,6 +12,9 @@ tasks:
   # init: Will be executed one time when creating a workspace, command: will be exected each time you open workspace
   - init: |
       echo "init tasks..."
+      git  clone --depth 1 https://github.com/KnowageLabs/Knowage-Server.git
+      cd Knowage-Server
+      docker-compose up
     command: |
-      echo "commands..."
+      echo "Find knowage server source at: ./Knowage-Server"
   - command: gp await-port 8080 && echo "was waiting for 8080"

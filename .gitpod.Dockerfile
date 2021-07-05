@@ -1,4 +1,4 @@
-FROM gitpod/workspace-postgres
+FROM gitpod/workspace-mysql
 
 USER gitpod
 
@@ -186,3 +186,25 @@ ENV DB_PORT=3306
 #ENV PASSWORD_ENCRYPTION_SECRET=
 
 # CMD ["./apache-tomcat/bin/startup.sh"]
+
+# psql -c "create user $DB_USER with encrypted password '$DB_PASS';"
+#
+# psql -c "ALTER ROLE $DB_USER WITH SUPERUSER;"
+#
+# psql -c "GRANT ALL PRIVILEGES ON DATABASE template0 TO $DB_USER;"
+#
+# psql -c "GRANT ALL PRIVILEGES ON DATABASE template1 TO $DB_USER;"
+#
+# psql -c "CREATE DATABASE knowagedb WITH OWNER $DB_USER;"
+
+# Import database:
+
+# cd Knowage-Server-Docker/Knowage-Server/knowagedatabasescripts/mysql
+# mysql -u gitpod -d knowagedb < MySQL_create.sql
+# mysql -u gitpod -d knowagedb < MySQL_create_quartz_schema.sql
+# mysql -u gitpod -d knowagedb < MySQL_create_calendar.sql
+# mysql -u gitpod -d knowagedb < MySQL_create_social.sql
+
+# cd Knowage-Server-Docker/Knowage-Server/knowagedatabasescripts/postgres
+# psql -U knowageuser -d knowagedb -a -f PG_create.sql
+# psql -U knowageuser -d knowagedb -a -f PG_create_quartz_schema.sql
