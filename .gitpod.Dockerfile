@@ -1,4 +1,4 @@
-FROM gitpod/workspace-mysql
+FROM gitpod/workspace-postgres
 
 USER gitpod
 
@@ -57,21 +57,22 @@ ARG KNOWAGE_DATABASE_SCRIPT="${KNOWAGE_CORE_ENGINE}-database-scripts-mysql"
 WORKDIR ${KNOWAGE_DIRECTORY}
 #
 # # Download Apache Tomcat and extract it
-# RUN  wget -q "${APACHE_TOMCAT_URL}" \
-#   && unzip ${APACHE_TOMCAT_PACKAGE}.zip -x "*/webapps/manager/*" \
-# 	"*/webapps/host-manager/*" \
-# 	"*/webapps/examples/*" \
-# 	"*/webapps/docs/*" \
-# 	"*/webapps/ROOT/*"  \
-#   && rm ${APACHE_TOMCAT_PACKAGE}.zip \
-#   && ln -s ${APACHE_TOMCAT_PACKAGE} apache-tomcat \
-#   && mkdir ${TOMCAT_RESOURCES} ${TOMCAT_CONF_CUSTOM_SERVER} ${TOMCAT_CONF_CUSTOM_CONTEXT}
-#
-# COPY setenv.sh ${TOMCAT_BIN}/
-# COPY server.xml context.xml knowage-default.policy hazelcast.xml ${TOMCAT_CONF}/
-# COPY services-whitelist.xml ${TOMCAT_RESOURCES}
-# COPY extGlobalResources ${TOMCAT_CONF_CUSTOM_SERVER}
-# COPY extContext ${TOMCAT_CONF_CUSTOM_CONTEXT}
+RUN sudo wget -q "${APACHE_TOMCAT_URL}" \
+  && unzip ${APACHE_TOMCAT_PACKAGE}.zip -x "*/webapps/manager/*" \
+	"*/webapps/host-manager/*" \
+	"*/webapps/examples/*" \
+	"*/webapps/docs/*" \
+	"*/webapps/ROOT/*"  \
+  && sudo rm ${APACHE_TOMCAT_PACKAGE}.zip \
+  && sudo ln -s ${APACHE_TOMCAT_PACKAGE} apache-tomcat \
+  && sudo mkdir ${TOMCAT_RESOURCES} ${TOMCAT_CONF_CUSTOM_SERVER} ${TOMCAT_CONF_CUSTOM_CONTEXT}
+
+# Copy config files
+COPY setenv.sh ${TOMCAT_BIN}/
+COPY server.xml context.xml knowage-default.policy hazelcast.xml ${TOMCAT_CONF}/
+COPY services-whitelist.xml ${TOMCAT_RESOURCES}
+COPY extGlobalResources ${TOMCAT_CONF_CUSTOM_SERVER}
+COPY extContext ${TOMCAT_CONF_CUSTOM_CONTEXT}
 #
 # # Install dependencies
 RUN sudo apt-get update \
