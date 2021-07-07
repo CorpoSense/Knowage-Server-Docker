@@ -19,12 +19,5 @@ tasks:
       docker-compose up
   - command: gp await-port 8080 && gp preview "$(gp url 8080)/knowage"
 
-# This may conflict with container's mysql:
-# echo "Creating user, db..."
-# mysql -e "CREATE USER 'gitpod'@'%' IDENTIFIED BY 'gitpod';"
-# mysql -e "CREATE DATABASE knowagedb;"
-# mysql -e "GRANT ALL PRIVILEGES ON knowagedb.* TO 'gitpod'@'%' WITH GRANT OPTION;"
-# mysql -e "FLUSH PRIVILEGES;"
-
 # Clone knowage:
 # git clone --depth 1 https://github.com/KnowageLabs/Knowage-Server.git
