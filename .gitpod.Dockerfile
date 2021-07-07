@@ -185,6 +185,13 @@ ENV HMAC_KEY=abc123
 # define the secret used to encrypt password; if not provided will be randomly generated (mandatory).
 ENV PASSWORD_ENCRYPTION_SECRET=def456
 
+ENV CACHE_DB_HOST=knowagecache
+ENV CACHE_DB_PORT=3306
+ENV CACHE_DB_DB=knowagecache
+ENV CACHE_DB_USER=knowageuser
+ENV CACHE_DB_PASS=knowagepassword
+
+
 # CMD ["./apache-tomcat/bin/startup.sh"]
 
 # psql -c "create user $DB_USER with encrypted password '$DB_PASS';"

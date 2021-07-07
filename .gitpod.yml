@@ -3,6 +3,12 @@ image:
 
 # exposed ports
 ports:
+- port: 5000
+  onOpen: ignore
+- port: 5001
+  onOpen: ignore
+- port: 3306
+  onOpen: ignore
 - port: 5701
   onOpen: ignore
 - port: 8080
