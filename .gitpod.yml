@@ -26,6 +26,7 @@ tasks:
       mysql -e "FLUSH PRIVILEGES;"
       echo "Build knowage server..."
       cd Knowage-Server-Docker
+      mkdir resources
       docker-compose build
     command: |
       echo "Running knowage server"
