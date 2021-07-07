@@ -1,4 +1,4 @@
-FROM gitpod/workspace-mysql
+FROM gitpod/workspace-full
 
 USER gitpod
 
@@ -169,15 +169,15 @@ RUN sudo apt-get update \
 
 
 # specify the DB user (mandatory)
-ENV DB_USER=gitpod
+ENV DB_USER=knowageuser
 # # specify the DB user (mandatory)
-ENV DB_PASS=gitpod
+ENV DB_PASS=knowagepassword
 # set the root password of the DB (mandatory)
-ENV DB_ROOT_PASS=gitpod
+ENV DB_ROOT_PASS=${DB_PASS}
 # specify the DB name (mandatory)
 ENV DB_DB=knowagedb
 # define the DB host (mandatory)
-ENV DB_HOST=127.0.0.1
+ENV DB_HOST=knowagedb
 # specify the DB port (mandatory)
 ENV DB_PORT=3306
 # define the HMAC key that will bet set into Tomcat configuration; if not provided will be randomly generated (mandatory).
