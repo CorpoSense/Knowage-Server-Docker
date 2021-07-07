@@ -5,12 +5,6 @@ image:
 ports:
 - port: 5000
   onOpen: ignore
-- port: 5001
-  onOpen: ignore
-- port: 3306
-  onOpen: ignore
-- port: 5701
-  onOpen: ignore
 - port: 8080
   onOpen: open-preview
 
@@ -23,9 +17,9 @@ tasks:
       mkdir resources
       docker-compose build
     command: |
-      echo "Running knowage server"
+      echo "Running Knowage server... (connect with user: biadmin, pwd: biadmin)"
       docker-compose up
-  - command: gp await-port 8080 && echo "was waiting for 8080"
+  - command: gp await-port 8080 && gp preview "$(gp url 8080)/knowage"
 
 # This may conflict with container's mysql:
 # echo "Creating user, db..."
