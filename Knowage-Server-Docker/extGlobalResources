@@ -1,10 +1,10 @@
-<!-- 
+<!--
     Resources from server.xml.d/extGlobalRerouces.
-    
+
     Copy the template from Knowage-Server-Docker/extGlobalRerouces, edit it and mount it as:
-    
+
         /home/knowage/apache-tomcat/conf/server.xml.d/extGlobalRerouces
-    
+
     To customize your server.xml with your resources. For example, you can
     add all the JDBC connections you need.
  -->
@@ -13,7 +13,7 @@
     auth="Container"
     driverClassName="com.mysql.jdbc.Driver"
     logAbandoned="true"
-    maxActive="20"
+    maxTotal="20"
     maxIdle="4"
     maxWait="300"
     minEvictableIdleTimeMillis="60000"
