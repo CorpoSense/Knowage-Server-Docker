@@ -3,6 +3,8 @@ image:
 
 # exposed ports
 ports:
+- port: 5701
+  onOpen: ignore
 - port: 8080
   onOpen: open-preview
   # onOpen: ignore
@@ -11,10 +13,18 @@ ports:
 tasks:
   # init: Will be executed one time when creating a workspace, command: will be exected each time you open workspace
   - init: |
-      echo "init tasks..."
-      git clone --depth 1 https://github.com/KnowageLabs/Knowage-Server.git
+      echo "Creating user, db..."
+      mysql -e "CREATE USER 'gitpod'@'%' IDENTIFIED BY 'gitpod';"
+      mysql -e "CREATE DATABASE knowagedb;"
+      mysql -e "GRANT ALL PRIVILEGES ON knowagedb.* TO 'gitpod'@'%' WITH GRANT OPTION;"
+      mysql -e "FLUSH PRIVILEGES;"
+      echo "Build knowage server..."
       cd Knowage-Server-Docker
-      docker-compose up
+      docker-compose build
     command: |
-      echo "Find knowage server source at: ./Knowage-Server"
+      echo "Running knowage server"
+      docker-compose up
   - command: gp await-port 8080 && echo "was waiting for 8080"
+
+# Clone knowage:
+# git clone --depth 1 https://github.com/KnowageLabs/Knowage-Server.git
