@@ -35,7 +35,9 @@ Before starting, here there are a few things you must be aware of:
 ## Run on Gitpod:
 You can run Knowage Server on Gitpod by clicking on the badge above.
 
-The actual config uses `docker-compose` to build-up and run Knowage Server which may take some minutes (for more details checkout `gitpod.yml` & ).
+The actual config uses `docker-compose` to build-up and run Knowage Server which may take some minutes (for more details checkout these files: `.gitpod.yml`, `.gitpod.Dockerfile` and `docker-compose.yml`).
 
 ### Build on Gitpod (TODO):
 You should be able to build the source from the original repo if you follow the right instruction, check out this answer [How could we build KnowageCE](https://www.knowage-suite.com/qa/697/how-could-we-build-knowage-ce).
+
+You'll need to setup and DB, you can use either MySQL or PostgreSQL by replacing `gitpod/workspace-full` in `.gitpod.Dockerfile` with `gitpod/workspace-mysql` or `gitpod/workspace-postgres`, you'll then need to configure the DB in `.gitpod.yml` config file.
