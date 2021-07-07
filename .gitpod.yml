@@ -3,8 +3,6 @@ image:
 
 # exposed ports
 ports:
-- port: 5000
-  onOpen: ignore
 - port: 8080
   onOpen: open-preview
 
